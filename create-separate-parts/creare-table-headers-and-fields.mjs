@@ -1,3 +1,10 @@
+const name = process.argv[2];
+
+const entityName = name
+  .split('-')
+  .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+  .join('');
+
 const rowNames = [
   'invoiceCode',
   'sentC',
@@ -112,7 +119,7 @@ function createTableHeaders() {
   let result = [];
 
   rowNames.forEach((rowName) => {
-    result.push(`<th>{{ 'Invoices.${rowName}' | translate }} </th>`);
+    result.push(`<th>{{ '${entityName}Search.ResultList.Header.${rowName}' | translate }} </th>`);
   });
 
   console.log(result);

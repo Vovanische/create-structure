@@ -29,7 +29,7 @@ export function searchComponentContent(entityName, name) {
     public featureName = FEATURE_NAME;
     public entityIDName = ENTITY_ID_NAME;
     public routeBase = RouteNames.${entityName}Base;
-    public actions = { Search, DownloadFileExcel };
+    public actions = { Search, DownloadFileExcel, ClearState };
   
     public filterForm = this.fb.group({
       xxx: this.fb.control({ value: '', disabled: false })     
@@ -47,7 +47,7 @@ export function searchComponentContent(entityName, name) {
   
     public override onEditRow(entity: ${entityName}) {
       this.rowDoubleClick.emit({
-        redirectFn: () => super.onEditRow(entity.),
+        redirectFn: () => super.onEditRow(entity.xxx),
         entity,
       });
     }

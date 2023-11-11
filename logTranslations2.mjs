@@ -16,16 +16,24 @@ const sheet = workbook.Sheets[sheetName];
 // at encoding level row and columns numerates from 0
 
 const range = { start: { column: 3, row: 1289 }, end: { column: 4, row: 1294 } };
-const data = [];
+const lowerCaseData = [];
+const upperCaseData = [];
 for (let ROW = range.start.row; ROW <= range.end.row; ++ROW) {
   let item = [];
   for (let COLUMN = range.start.column; COLUMN <= range.end.column; ++COLUMN) {
     const cell = sheet[xlsx.utils.encode_cell({ c: COLUMN, r: ROW })];
     item.push(cell ? cell.v : undefined);
   }
-  const translationName = item[1][0].toLowerCase() + item[1].substring(1);
-  const translationValue = item[0];
-  const formattedItem = `"${translationName}": "${translationValue}"`;
-  data.push(formattedItem);
+  const lowerCaseTranslationName = item[1][0].toLowerCase() + item[1].substring(1);
+  const lowerCaseTranslationValue = item[0];
+  const lowerCaseFormattedItem = `"${lowerCaseTranslationName}": "${lowerCaseTranslationValue}"`;
+
+  const upperCaseTranslationName = item[1][0].toUpperCase() + item[1].substring(1);
+  const upperCaseTranslationValue = item[0];
+  const upperCaseFormattedItem = `"${upperCaseTranslationName}": "${upperCaseTranslationValue}"`;
+
+  lowerCaseData.push(lowerCaseFormattedItem);
+  upperCaseData.push(upperCaseFormattedItem);
 }
-console.log('🚀 ~ data:', data);
+console.log('🚀 ~ lowerCaseData:', lowerCaseData);
+console.log('🚀 ~ upperCaseData:', upperCaseData);
