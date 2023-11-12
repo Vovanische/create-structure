@@ -31,7 +31,7 @@ export function searchComponentContent(entityName, name) {
     public routeBase = RouteNames.${entityName}Base;
     public actions = { Search, DownloadFileExcel, ClearState };
   
-    public filterForm = this.fb.group({
+    public override filterForm = this.fb.group({
       xxx: this.fb.control({ value: '', disabled: false })     
     });
   

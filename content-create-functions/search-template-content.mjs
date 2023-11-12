@@ -34,7 +34,7 @@ export function searchTemplateContent(entityName) {
               <div class="field grid">
                 <label for="xxx" class="col-12 md:col-3">{{ '${entityName}Search.Filters.xxx' | translate
                   }}</label>
-                <div class="col-10 md:col-8">
+                <div class="col-12 md:col-8">
                   <input formControlName="xxx" type="text" id="xxx" pInputText
                     class="p-inputtext-sm w-full" />
                 </div>
