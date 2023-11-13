@@ -7,7 +7,7 @@ export function searchTemplateContent(entityName) {
           styleClass="custom-p-panel">
           <ng-template pTemplate="header"> 
               <app-search-panel-header
-              [title]="'${entityName}.Title' | translate"
+              [title]="'${entityName}Search.Title' | translate"
               [disabled]="isLoading$ | async"
               [isSearchOnly]="isSearchOnly"
               (search)="search()"
