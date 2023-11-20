@@ -240,7 +240,7 @@ function editPageTemplateContent() {
     <app-entity-details-toolbox
       [disabled]="isLoading$ | async"
       [totalNumber]="totalCount"
-      [showLock]="false"
+      [showLock]="true"
       [isShowDelete]="!isNewPage"
       [isShowNew]="!isNewPage"
       [isLocked]="isFieldsLocked"

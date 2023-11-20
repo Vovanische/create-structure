@@ -4,7 +4,6 @@ export function searchTemplateContent(entityName) {
     <ng-template [appLayoutType]="TemplateType.Body">
       <form [formGroup]="filterForm" [ngxsForm]="formPath" (ngSubmit)="search()">
       <p-panel [collapsed]="collapsed" (collapsedChange)="onCollapsePanel($event)" [toggleable]="true" expandIcon="pi pi-chevron-up" collapseIcon="pi pi-chevron-down" styleClass="custom-p-panel">
-          styleClass="custom-p-panel">
           <ng-template pTemplate="header"> 
               <app-search-panel-header
               [title]="'${entityName}Search.Title' | translate"
@@ -23,7 +22,7 @@ export function searchTemplateContent(entityName) {
               <div class="field grid">
                 <label for="xxx" class="col-12 md:col-3">{{ '${entityName}Search.Filters.xxx' | translate
                   }}</label>
-                <div class="col-10 md:col-8">
+                <div class="col-12 md:col-8">
                   <input class="p-inputtext-sm w-full" formControlName="xxx" type="text" id="xxx" pInputText />
                 </div>
               </div>           
@@ -47,8 +46,11 @@ export function searchTemplateContent(entityName) {
     </ng-template>
     <ng-template [appLayoutType]="TemplateType.SearchResults">
       <ng-container *ngIf="entities$ | async as entities">
-        <app-table-paginator [title]="'${entityName}Search.SearchResultTitle' | translate" [pageSize]="pageSize"
-          [totalCount]="totalCount$ | async" [firstPage]="currentPageFirstItemIndex$ | async"
+        <app-table-paginator [title]="'${entityName}Search.SearchResultTitle' | translate" 
+          [pageSize]="pageSize"
+          [showWhenEmpty]="true"
+          [totalCount]="totalCount$ | async" 
+          [firstPage]="currentPageFirstItemIndex$ | async"
           (pageChange)="onChangePage($event)"></app-table-paginator>
         <p-table *ngIf="entities.length" [value]="entities" [scrollable]="true" [rowHover]="true" [customSort]='true' (onSort)="onSort($event)" [lazy]="true">
           <ng-template pTemplate="header">

@@ -15,7 +15,7 @@ const sheet = workbook.Sheets[sheetName];
 
 // at encoding level row and columns numerates from 0
 
-const range = { start: { column: 3, row: 1289 }, end: { column: 4, row: 1294 } };
+const range = { start: { column: 3, row: 1289 }, end: { column: 4, row: 1307 } };
 const lowerCaseData = [];
 const upperCaseData = [];
 for (let ROW = range.start.row; ROW <= range.end.row; ++ROW) {

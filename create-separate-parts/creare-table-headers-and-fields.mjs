@@ -77,49 +77,85 @@ const rowSubNames = [
 
 function createTableData() {
     const rowNames = [
-        "requestCode",
-        "user",
-        "userConcCode",
-        "requestDate",
+        "invoiceCode",
+        "sentC",
+        "transferred",
+        "type",
+        "invoiceNumber",
+        "invoiceDate",
+        "dealerCode",
+        "dealerName",
+        "accountingCustomerCode",
+        "customerCode",
+        "companyName",
+        "otherBranchAmmCode",
+        "companyNameAmm",
+        "taxCode",
+        "vatNumber",
+        "vatReasonCode",
+        "vatReasonName",
+        "vatPercentage",
+        "accountingReasonCode",
+        "accountingReasonName",
+        "quotationCode",
         "orderNumber",
-        "transportOrderNumber",
-        "assemblyOrderNumber",
-        "supplierOrderNumber",
-        "senderDealerCode",
-        "senderDealerName",
-        "recipientDealerCode",
-        "recipientDealerName",
-        "categoryArticles",
-        "warehouseReason",
-        "deliverWithin",
-        "aspect",
-        "numberOfPackages",
-        "delivery",
-        "harbor",
-        "volume",
-        "netWeight",
-        "grossWeight",
-        "meansofShipping",
-        "carrierCode",
-        "carrierName",
-        "carrierAddress",
-        "carrierCity",
-        "carrierCap",
-        "transportAmount",
-        "assemblyAmount",
-        "totalItems",
-        "totalOrder",
-        "acceptedComm",
-        "acceptedCont",
-        "cancelled",
-        "exhausted",
-        "note",
+        "taxableIncome",
+        "expense",
+        "vatAmount",
+        "totalAmount",
+        "withHoldingPercentage",
+        "withHolding",
+        "totalToPay",
+        "cashed",
+        "cashIn",
+        "expirationDate",
+        "periodinvoicedFrom",
+        "periodinvoiceTo",
+        "rentalStartDate",
+        "rentalEndDate",
+        "paymentCode",
+        "paymentDescription",
+
+        "notes",
+        "createdOn",
+        "ep",
+        "factory",
+        "dataFactory",
+        "sentFactory",
+        "accountingInvoiceNumber",
+        "archivedOn",
+        "shippedOn",
+        "cig",
+        "cup",
+        "majorPublicWorkCode",
+        "subcontracting",
+        "user",
+    ];
+
+    const bankInfo = [
+        "bankCode",
+        "bankName",
+        "iban",
+        "abi",
+        "cab",
+        "bankAgency",
+        "bankAddress",
+        "bankLocation",
+        "bankCityName",
+        "bankPostalCode",
+        "bankProvinceCode",
     ];
 
     let result = [];
 
     rowNames.forEach((rowName) => {
-        result.push(`<td>{{ entity.${rowName} }}</td>`);
+        const lowerCasePropertyName = rowName[0].toLowerCase() + rowName.substring(1);
+        result.push(`<td>{{ '${entityName}.${lowerCasePropertyName} }}</td>`);
+    });
+
+    bankInfo.forEach((rowName) => {
+        const lowerCasePropertyName = rowName[0].toLowerCase() + rowName.substring(1);
+        result.push(`<td>{{ '${entityName}.bankInfo.${lowerCasePropertyName} }}</td>`);
     });
 
     console.log(result);
@@ -127,52 +163,85 @@ function createTableData() {
 
 function createTableHeaders() {
     const headerNames = [
-        "requestCode",
-        "user",
-        "userConcCode",
-        "requestDate",
+        "invoiceCode",
+        "sentC",
+        "transferred",
+        "type",
+        "invoiceNumber",
+        "invoiceDate",
+        "dealerCode",
+        "dealerName",
+        "accountingCustomerCode",
+        "customerCode",
+        "companyName",
+        "otherBranchAmmCode",
+        "companyNameAmm",
+        "taxCode",
+        "vatNumber",
+        "vatReasonCode",
+        "vatReasonName",
+        "vatPercentage",
+        "accountingReasonCode",
+        "accountingReasonName",
+        "quotationCode",
         "orderNumber",
-        "transportOrderNumber",
-        "assemblyOrderNumber",
-        "supplierOrderNumber",
-        "senderDealerCode",
-        "senderDealerName",
-        "recipientDealerCode",
-        "recipientDealerName",
-        "categoryArticles",
-        "warehouseReason",
-        "deliverWithin",
-        "aspect",
-        "numberOfPackages",
-        "delivery",
-        "harbor",
-        "volume",
-        "netWeight",
-        "grossWeight",
-        "meansofShipping",
-        "carrierCode",
-        "carrierName",
-        "carrierAddress",
-        "carrierCity",
-        "carrierCap",
-        "transportAmount",
-        "assemblyAmount",
-        "totalItems",
-        "totalOrder",
-        "acceptedComm",
-        "acceptedCont",
-        "cancelled",
-        "exhausted",
-        "note",
+        "taxableIncome",
+        "expense",
+        "vatAmount",
+        "totalAmount",
+        "withHoldingPercentage",
+        "withHolding",
+        "totalToPay",
+        "cashed",
+        "cashIn",
+        "expirationDate",
+        "periodinvoicedFrom",
+        "periodinvoiceTo",
+        "rentalStartDate",
+        "rentalEndDate",
+        "paymentCode",
+        "paymentDescription",
+
+        "notes",
+        "createdOn",
+        "ep",
+        "factory",
+        "dataFactory",
+        "sentFactory",
+        "accountingInvoiceNumber",
+        "archivedOn",
+        "shippedOn",
+        "cig",
+        "cup",
+        "majorPublicWorkCode",
+        "subcontracting",
+        "user",
+    ];
+
+    const bankInfo = [
+        "bankCode",
+        "bankName",
+        "iban",
+        "abi",
+        "cab",
+        "bankAgency",
+        "bankAddress",
+        "bankLocation",
+        "bankCityName",
+        "bankPostalCode",
+        "bankProvinceCode",
     ];
 
     let result = [];
 
     headerNames.forEach((headerName) => {
         const upperCasePropertyName = headerName[0].toUpperCase() + headerName.substring(1);
-        result.push(
-            `<th pSortableColumn="${headerName}" class='py-2'>{{ '${entityName}Search.ResultList.Header.${upperCasePropertyName}' | translate }} <p-sortIcon class='px-3' field='${headerName}'></p-sortIcon></th>`
-        );
+        result.push(`<th>{{ '${entityName}.${headerName}' | translate }} </th>`);
+    });
+
+    bankInfo.forEach((headerName) => {
+        const upperCasePropertyName = headerName[0].toUpperCase() + headerName.substring(1);
+        result.push(`<th>{{ '${entityName}.bankInfo.${headerName}' | translate }} </th>`);
     });
 
     console.log(result);
