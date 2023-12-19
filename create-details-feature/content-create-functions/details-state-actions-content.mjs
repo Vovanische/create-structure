@@ -1,5 +1,5 @@
 export function stateActionsContent(entityName) {
-  return `
+    return `
 
   const actions = new ActionsBuilder(FEATURE_NAME);
 
@@ -14,13 +14,15 @@ export function stateActionsContent(entityName) {
   export const DownloadFileExcel = actions.downloadFileExcel;
 
   export class SearchByEntityCode {
+    public page;
     public entityCode;
-
+  
     static readonly type = \`[\${FEATURE_NAME}] Search by entity code\`;
-
-    constructor(entityCode) {
-        this.entityCode = entityCode;
+  
+    constructor(page, entityCode) {
+      this.entityCode = entityCode;
+      this.page = page;
     }
-}
+  }
     `;
 }
