@@ -76,15 +76,17 @@ const rowSubNames = [
 ];
 
 function createTableData() {
-    const rowNames =  [
-        "mavCode",
-        "mavDate",
-        "bankCode",
-        "bankSupport",
-        "requestedAmount",
-        "actualAmount"
+    const rowNames = [
+        "comunicationCode",
+        "dealerCode",
+        "dealerName",
+        "inData",
+        "orderType",
+        "orderList",
+        "read",
+        "readingDate",
+        "userReading",
     ];
-
 
     // const bankInfo = [
     //     "bankCode",
@@ -116,15 +118,17 @@ function createTableData() {
 }
 
 function createTableHeaders() {
-    const headerNames =  [
-        "mavCode",
-        "mavDate",
-        "bankCode",
-        "bankSupport",
-        "requestedAmount",
-        "actualAmount"
+    const headerNames = [
+        "comunicationCode",
+        "dealerCode",
+        "dealerName",
+        "inData",
+        "orderType",
+        "orderList",
+        "read",
+        "readingDate",
+        "userReading",
     ];
-
 
     // const bankInfo = [
     //     "bankCode",
@@ -145,7 +149,7 @@ function createTableHeaders() {
     headerNames.forEach((headerName) => {
         const upperCasePropertyName = headerName[0].toUpperCase() + headerName.substring(1);
         result.push(
-            `<th pSortableColumn="${headerName}" class="py-1">{{ '${entityName}Search.ResultList.Header.${upperCasePropertyName}' | translate }} <p-sortIcon field="${headerName}" class="px-3"></p-sortIcon></th>`
+            `<th scope="col" class="py-1" pSortableColumn="${headerName}">{{ '${entityName}Search.ResultList.Header.${upperCasePropertyName}' | translate }} <p-sortIcon field="${headerName}" class="px-3"></p-sortIcon></th>`
         );
     });
     // <th pSortableColumn="xxx" class="py-1">{{ 'UsersSearch.ResultList.Header.xxx' | translate }} <p-sortIcon field="xxx" class="px-3"></p-sortIcon></th>
